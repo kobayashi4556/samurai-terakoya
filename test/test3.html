@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialTech Clone</title>
+    <style>
+        /* --- 基本リセットとフォント設定 --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* ロゴのアイコン用円（簡易再現） */
+        .logo::before {
+            content: "S";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #2710d5;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 18px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav li a {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        nav li a:hover {
+            color: #2710d5;
+        }
+
+        /* --- メインビジュアル (Hero Section) --- */
+        #hero {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 500px;
+            display: flex;
+            overflow: hidden; /* はみ出し防止 */
+        }
+
+        /* 左側の青い曲線エリア */
+        .hero-content {
+            background-color: #2710d5; /* デザインの青色 */
+            width: 60%;
+            height: 100%;
+            color: #fff;
+            padding: 100px 50px;
+            border-bottom-right-radius: 250px; /* ここの値で曲線を調整 */
+            position: relative;
+            z-index: 2; /* 画像より手前に表示 */
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        /* 右側の画像エリア */
+        .hero-image {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 55%; /* 少し青色エリアと被らせる */
+            height: 400px;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px; /* 画像の角丸 */
+        }
+
+        /* --- MISSION セクション --- */
+        #mission {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* タイトル横の紫の線 */
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #a78bf2; /* 薄い紫 */
+            position: absolute;
+            right: -80px;
+            top: 50%;
+        }
+
+        /* 2カラムレイアウト */
+        .mission-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .mission-item {
+            width: 48%;
+        }
+
+        /* 左側の画像 */
+        .mission-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .mission-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .mission-item p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* S2DGs の特別レイアウト */
+        .s2dgs-banner {
+            display: flex;
+            background-color: #f9f9f9; /* 薄いグレー背景 */
+            margin-bottom: 20px;
+            height: 300px; /* 左の画像と高さを合わせる */
+        }
+
+        .s2dgs-blue-box {
+            background-color: #2710d5;
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .s2dgs-text-box {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* 文字の色分け（S, D, G のみ色を変える） */
+        .highlight {
+            color: #2710d5;
+        }
+
+        /* もっとみるボタン */
+        .btn-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2710d5;
+            color: white;
+            padding: 10px 40px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-top: 20px;
+            float: right; /* 右寄せ */
+        }
+        
+        .btn-more::after {
+            content: "→";
+            margin-left: 10px;
+        }
+
+        /* --- レスポンシブ対応（簡易） --- */
+        @media (max-width: 768px) {
+            .hero-content {
+                width: 100%;
+                border-radius: 0 0 50px 50px;
+                text-align: center;
+                height: auto;
+            }
+            .hero-image {
+                position: static;
+                width: 100%;
+                margin-top: -50px;
+                padding: 0 20px;
+            }
+            .mission-container {
+                flex-direction: column;
+            }
+            .mission-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SocialTech</div>
+        <nav>
+            <ul>
+                <li><a href="#">MISSION</a></li>
+                <li><a href="#">PRODUCT</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">VISION</a></li>
+                <li><a href="#">COMPANY</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>WORLD PEACE</h1>
+                <p>IT教育で世界平和を実現する</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/800x500/cccccc/333333?text=Hero+Image" alt="オフィス風景">
+            </div>
+        </section>
+
+        <section id="mission">
+            <h2 class="section-title">MISSION</h2>
+            
+            <div class="mission-container">
+                <div class="mission-item">
+                    <img src="https://via.placeholder.com/500x300/cccccc/333333?text=Mission+Image" alt="世界平和の実現" class="mission-img">
+                    <h3>世界平和の実現</h3>
+                    <p>人類の悲願である世界平和。世界平和を脅かす様々な社会問題を解決するためには、イノベーションをどんどん起こしていく必要があります。</p>
+                    <p>SocialTechは、プログラミング教育を通してイノベーターを輩出することで、世界平和という大きなテーマに挑んでいきます。</p>
+                </div>
+
+                <div class="mission-item">
+                    <div class="s2dgs-banner">
+                        <div class="s2dgs-blue-box">
+                            S2DGs
+                        </div>
+                        <div class="s2dgs-text-box">
+                            <span class="highlight">S</span>ocialTech<br>
+                            <span class="highlight">S</span>ustainable<br>
+                            <span class="highlight">D</span>evelopment<br>
+                            <span class="highlight">G</span>oals
+                        </div>
+                    </div>
+                    <h3>S2DGsの実現</h3>
+                    <p>国連が掲げる「Sustainable Development Goals（持続可能な開発目標）」に含まれる17つのグローバル目標のうち、以下の5つの目標の実現をミッションとしてサービスを展開しています。</p>
+                    
+                    <a href="#" class="btn-more">もっとみる</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

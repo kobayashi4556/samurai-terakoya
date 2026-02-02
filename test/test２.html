@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャラクター紹介 - REIA, SHION, ZEROS</title>
+    <style>
+        body {
+            /* ダークな背景色でキャラクターを際立たせる */
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #d4af37; /* ゴールド風の色でファンタジー感を演出 */
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+        .character-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); /* 影をつけて立体感を出す */
+            margin-bottom: 30px;
+        }
+        .promo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .youtube-btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+        }
+        .youtube-btn:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+        }
+        .ai-note {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        /* スマートフォン向け調整 */
+        @media (max-width: 600px) {
+            .promo-text {
+                font-size: 1.2rem;
+            }
+            .youtube-btn {
+                width: 80%;
+                padding: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>CHARACTER PROFILES</h1>
+
+        <img src="レイア・シオン・ゼロス.png" alt="キャラクター設定画：レイア・シオン・ゼロス" class="character-img">
+
+        <div class="promo-text">
+            このキャラクターの漫画を<br>
+            YouTubeで配信中
+        </div>
+
+        <a href="https://youtube.com/shorts/--hiM_WVwmo" class="youtube-btn" target="_blank">
+            ▶ YouTubeで見る
+        </a>
+
+        <div class="ai-note">
+            ※この画像はAIで作成した画像です。
+        </div>
+    </div>
+
+</body>
+</html>
